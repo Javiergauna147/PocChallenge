@@ -1,0 +1,86 @@
+<div class="container main-container mt-4">
+    <h1 class="text-end">POC Javier Gauna</h1>
+    <hr>
+    <br>
+    <h2>Punto 3</h2>
+    <br>
+    <div class="container mb-5">
+        <h3 class="text-center">Input</h3>
+        <table class="table mt-4 bg-light">
+            <thead>
+                <th socpe="row">Name</th>
+                <th socpe="row">Link</th>
+                <th socpe="row">Map</th>
+                <th socpe="row">Quantity</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let department of deparmentsInput">
+                    <th scope="row">{{department.getName()}}</th>
+                    <td>{{department.getLink()}}</td>
+                    <td>{{department.getMap()}}</td>
+                    <td>{{department.getQuantity()}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <h3 class="text-center">Output</h3>
+        <table class="table mt-4 bg-light">
+            <thead>
+                <th socpe="row">Name</th>
+                <th socpe="row">Link</th>
+                <th socpe="row">Map</th>
+                <th socpe="row">Quantity</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let department of deparmentsOutput">
+                    <th scope="row">{{department.getName()}}</th>
+                    <td>{{department.getLink()}}</td>
+                    <td>{{department.getMap()}}</td>
+                    <td>{{department.getQuantity()}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <hr>
+        <h2>Punto 4</h2>
+        <br>
+        <h3 class="text-center">Input</h3>
+        <table class="table mt-4 bg-light">
+            <thead>
+                <th socpe="row">Name</th>
+                <th socpe="row">Link</th>
+                <th socpe="row">Map</th>
+                <th socpe="row">Quantity</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let brand of brandsInput">
+                    <th scope="row">{{brand.getName()}}</th>
+                    <td>{{brand.getLink()}}</td>
+                    <td>{{brand.getMap()}}</td>
+                    <td>{{brand.getQuantity()}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <h3 class="text-center">Output</h3>
+        <table class="table mt-4 bg-light">
+            <thead>
+                <th socpe="row">Name</th>
+                <th socpe="row">Link</th>
+                <th socpe="row">Map</th>
+                <th socpe="row">Quantity</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let brand of brandsOutput">
+                    <th scope="row">{{brand.getName()}}</th>
+                    <td>{{brand.getLink()}}</td>
+                    <td>{{brand.getMap()}}</td>
+                    <td>{{brand.getQuantity()}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <hr>
+        <h2>Punto 5, 6 y 7 en consola.</h2>
+    </div>
+</div>

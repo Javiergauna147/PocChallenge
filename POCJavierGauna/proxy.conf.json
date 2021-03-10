@@ -1,0 +1,7 @@
+{
+    "/": {
+        "target": "https://arcordiezb2c.myvtex.com",
+        "secure": true,
+        "changeOrigin": true
+    }
+}

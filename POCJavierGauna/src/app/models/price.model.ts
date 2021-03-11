@@ -13,8 +13,8 @@ export class PriceModel {
      * @params currencyName
      * @params isoCode
      * @params symbol
-	*/
-    constructor( amount: number, currencyName: string, isoCode:string, symbol: string ) {
+    */
+    constructor(amount: number, currencyName: string, isoCode: string, symbol: string) {
         this.amount = amount;
         this.currencyName = currencyName;
         this.isoCode = isoCode;

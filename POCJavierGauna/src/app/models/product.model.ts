@@ -20,7 +20,7 @@ export class ProductModel {
      * @params precio
      * @params categoryName
      * @params departmentName
-	*/
+    */
     constructor(id: number, name: string, brandName: string, quantity: number, precio: PriceModel, categoryName: string, departmentName: string) {
 
         this.id = id;

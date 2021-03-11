@@ -55,4 +55,12 @@ export class CategoryModel {
     getName(): string {
         return this.Name;
     }
+
+    /**** Metods ****/
+    /**
+     * Agrega un nuevo children al objeto
+	*/
+    pushNewChildren(newChildren: CategoryModel) {
+        this.Children.push(newChildren);
+    }
 }

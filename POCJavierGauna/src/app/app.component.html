@@ -82,5 +82,30 @@
         <br>
         <hr>
         <h2>Punto 5, 6 y 7 en consola.</h2>
+        <br>
+        <hr>
+        <h2>OPCIONALES</h2>
+        <br>
+        <h2>Punto 1 en consola.</h2>
+        <br>
+        <hr>
+        <h2>Punto 2</h2>
+        <br>
+        <table class="table mt-4 bg-light">
+            <thead>
+                <th socpe="row">#</th>
+                <th socpe="row">Cantidad de categories sin children</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let level of countOfNotChildrenInlevels">
+                    <th scope="row">{{level[0]}}</th>
+                    <td>{{level[1]}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <br>
+        <h5>El model para precios es price.model.ts y para productos es product.model.ts , en consola se imprime un objeto de ejemplo para cada modelo luego de imprimir el tree.</h5>
+        <br>
     </div>
 </div>

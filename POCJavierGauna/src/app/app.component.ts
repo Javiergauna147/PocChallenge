@@ -5,6 +5,8 @@ import { BrandModel } from './models/brand.model';
 import { CategoryModel } from './models/category.model';
 import { DataModel } from './models/data.model';
 import { HelpersService } from './services/helpers.service';
+import { PriceModel } from './models/price.model';
+import { ProductModel } from './models/product.model';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +21,7 @@ export class AppComponent {
   brandsInput: BrandModel[] = [];
   brandsOutput: BrandModel[] = [];
   categoriesTree: CategoryModel[] = [];
+  countOfNotChildrenInlevels: any = [];
   
   /**
      * Constructor
@@ -75,16 +78,39 @@ export class AppComponent {
     /**
      * ordenamos el tree con objetos CategoryModel de manera ascendente según el atributo Name
 	  */
-   this.categoriesTree = this.helpers.sortTreeByName(this.categoriesTree, true);
+   this.helpers.sortTreeByName(this.categoriesTree, true);
    /**
-     * Imprimimos el arbol
+    * Agregamos un children aleatorio a "leche" y a "Carne de aves"
 	  */
-    this.helpers.printTreeInConsole(this.categoriesTree);
+   this.categoriesTree = this.helpers.addRamdonChildrenInCategorieByName(this.categoriesTree, 'Leche');
+   this.categoriesTree = this.helpers.addRamdonChildrenInCategorieByName(this.categoriesTree, 'Carne de aves');
+   /**
+    * contamos la cantidad de categories sin children en cada nivel
+    */
+   this.countOfNotChildrenInlevels = Object.entries(this.helpers.countNoChildrenCategoryInlevels(this.categoriesTree));
+   console.log("Cantidad de objetos sin Children en los distintos niveles:")
+   console.log(this.countOfNotChildrenInlevels);
+   /**
+    * Imprimimos el arbol
+	  */
+   this.helpers.printTreeInConsole(this.categoriesTree);
+  }
+
+  exampleOfPriceAndProductModel(){
+    console.log("Ejemplo de un objeto PriceModel:");
+    const price: PriceModel = new PriceModel(16000, 'pesos argentinos', 'AR$', '$');
+    console.log(price);
+
+    console.log("Ejemplo de un objeto ProductModel:");
+    const product: ProductModel = new ProductModel(1234, "placa madre asus", "Asus", 1, price, "Productos de pc", "tecnología");
+    console.log(product);
+
   }
 
   prepareData(){
     this.sortDepartmentsByQuantity();
     this.sortBrandsByName();
     this.manipulateTree();
+    this.exampleOfPriceAndProductModel();
   }
 }

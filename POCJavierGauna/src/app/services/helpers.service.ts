@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { CategoryModel } from '../models/category.model';
 
 @Injectable({
   providedIn: 'root'
@@ -89,4 +90,74 @@ export class HelpersService {
     }
     return tabs + text;
   }
+
+  /**
+     * addRamdonChildrenInCategorie()
+     * Agrega un children con valores aleatorios a la categoria cuyo nombre coincida con el nombre que pasamos como parametro
+     * @params treeOfObjects
+     * @params categorieName
+	*/
+  addRamdonChildrenInCategorieByName(treeOfObjects: any[], categorieName:string): any{
+    treeOfObjects.map(object => {
+      /**
+      * Si el nombre de la categoria coincide con el nombre pasado por parametro, se crea
+      * un nuevo objeto del tipo Category Model y se agrega al tree
+      */
+      if(object.getName() === categorieName){
+        const randomNumber = Math.floor(Math.random()*10000).toString();
+        const randomCategory = {
+          Name: 'RamdonCategory' + randomNumber,
+          Link: '/' + 'RamdonCategory' + randomNumber + '/',
+          LinkEncoded: '/' + 'RamdonCategory' + randomNumber + '/',
+          Map: 'c',
+          Value: 'RamdonCategory' + randomNumber,
+          Id: Math.floor(Math.random()*10000),
+          Quantity: Math.floor(Math.random()*1000),
+          Position: randomNumber,
+          Children: []
+        }
+        object.pushNewChildren(new CategoryModel(randomCategory));
+        console.log(`ENCONTRADO a "${categorieName}" agregando nuevo objeto`);
+        console.log(randomCategory);
+      }
+      if(object.getChildren().length > 0){
+        this.addRamdonChildrenInCategorieByName(object.getChildren(),categorieName);
+      }
+    });
+    return treeOfObjects;
+  }
+
+  /**
+     * countNoChildrenCategoryInlevels()
+     * Cuenta la cantidad de cateogries por nivel que no tienen Childrens
+     * @params treeOfObjects
+     * @params level (Identificador de nivel del nodo)
+     * @params levelsMap (mapa de los niveles con la cantidad de
+     *         nodos sin childrens en el respectivo nivel, esta variable
+     *         se va pasando por referencia a travez de toda la recursividad y va acumulando
+     *         los valores categories sin children en cada nivel)
+	*/
+  countNoChildrenCategoryInlevels(treeOfObjects: any[], level: number = 0, levelsMap: any = {}): any{
+
+  /**
+     * si el nivel no existe en el mapa, lo agrego y le asigno valor 0
+  */
+    if(!levelsMap[('nivel ' + level.toString())]){
+      levelsMap[('nivel ' + level.toString())] = 0;
+    }
+
+    treeOfObjects.map(object => {
+      if(object.getChildren().length > 0){
+        this.countNoChildrenCategoryInlevels(object.getChildren(), level+1, levelsMap);
+      } else {
+      /**
+       * Si el nivel no tiene childrens sumo una unidad al valor del respectivo nivel 
+       */
+        levelsMap[('nivel ' + level.toString())] += 1;
+      }
+    });
+
+    return levelsMap;
+  }
+
 }

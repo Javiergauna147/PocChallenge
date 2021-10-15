@@ -28,6 +28,7 @@ export class AppComponent {
    * @params helpers (inyección del helpers.services.ts)
    */
   constructor(private api: ApiService, private helpers: HelpersService) {
+    console.log("la concha de tu madre");
     this.api.getAll().subscribe((data: DataModel) => {
       this.api.setData(data);
       this.prepareData();
